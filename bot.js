@@ -7,7 +7,7 @@ const parser = require('./parser.js');
 
 require('dotenv').config();
 
-const token = process.env.TELEGRAM_TOKEN_CARONU;
+const token = process.env.TELEGRAM_TOKEN_JESUS_LIFE;
 let bot;
 
 if (process.env.NODE_ENV === 'production') {
