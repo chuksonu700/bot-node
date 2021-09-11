@@ -7,8 +7,13 @@ const parser = require('./parser.js');
 
 require('dotenv').config();
 
-const token = process.env.TELEGRAM_TOKEN_JESUS_LIFE;
+const token = process.env.TELEGRAM_TOKEN_CHUKSONU;
 let bot;
+
+
+const sasas = `your token is ${token} from bot 1`;
+console.log(sasas);
+
 
 if (process.env.NODE_ENV === 'production') {
     bot = new TelegramBot(token);
@@ -58,13 +63,32 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 // acknoledge the reciept of message
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
+    const name = msg.from.username;
 
     // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, 'Received your message');
+    bot.sendMessage(chatId, `Hello ${name} Received your message expect a reply Shortly`);
 });
 
+let users = []
+    //register a user
+bot.onText(/\/register/, (msg, match) => {
+    const chatId = msg.chat.id
+    users.push(chatId)
+    console.log('user registered')
+    bot.sendMessage(chatId, 'Done.')
+})
 
-//setting up the web hook for heroku
+//The bot sends a message to each user once per second — we just go through the array of users with a for-loop.
+setInterval(function() {
+        if (users.length > 0) {
+            for (let i = 0; i < users.length; i++) {
+                bot.sendMessage(users[i], 'Is this annoying?')
+            }
+        } else {
+            console.log('no user registered')
+        }
+    }, 1780000)
+    //setting up the web hook for heroku
 
 // Move the package imports to the top of the file
 const express = require('express')

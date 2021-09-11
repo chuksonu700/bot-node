@@ -7,10 +7,10 @@ const parser = require('./parser.js');
 
 require('dotenv').config();
 
-const token = process.env.TELEGRAM_TOKEN_CARONU;
+const token = process.env.TELEGRAM_TOKEN_JESUS_LIFE;
 let bot;
 
-const sasas = `your token is ${token} from app`;
+const sasas = `your token is ${token} from bot 2`;
 console.log(sasas);
 
 if (process.env.NODE_ENV === 'production') {
