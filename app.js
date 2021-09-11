@@ -22,9 +22,10 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 // acknoledge the reciept of message
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
+    const name = msg.from.username;
 
     // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, 'Received your message');
+    bot.sendMessage(chatId, `Hello ${name} Received your message expect a reply Shortly`);
 });
 
 let users = []
