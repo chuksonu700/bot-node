@@ -1,0 +1,27 @@
+{
+  "name": "bot-node",
+  "version": "1.0.0",
+  "description": "A growth checking Bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Jesus",
+    "Bot",
+    "growth",
+    "Check"
+  ],
+  "author": "Chuks Onuigbo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.5",
+    "mysql": "^2.18.1",
+    "node-telegram-bot-api": "^0.54.0",
+    "telebot": "^1.4.1"
+  }
+}
