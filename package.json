@@ -5,10 +5,7 @@
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "concurrently \"npm run app\" \"npm run bot2\" \"npm run bot\"",
-        "app": "node app.js",
-        "bot": "node bot.js",
-        "bot2": "node bot2.js"
+        "start": "node bot.js"
     },
     "keywords": [
         "Jesus",
