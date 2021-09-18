@@ -23,11 +23,11 @@ The following steps describe how to create a new bot:
 - If your chosen name is available, BotFather will send you a token
 - Save the token
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/BotFather.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\BotFather.JPG" height="500" width="400">
 
 Once your bot is created, you can set a Description for it. `Description` is a message in middle of the page usually describing what the bot can do.
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/desc.JPG" height="500" width="500">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\desc.JPG" height="500" width="500">
 
 To set Description for your bot in BotFather do the following:
 - Send <code>/setdescription</code> to BotFather
@@ -95,7 +95,7 @@ Ok , now open up your command prompt and type:
     node index.js
   Go to your bot and hit on <code>/start</code> and then type <code>"Hi"</code> to it:
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/first%20message.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\first%20message.JPG" height="500" width="400">
 
   So now that you know how to send and receive messages in your bot you may want to put some salt on it:
 
@@ -116,7 +116,7 @@ bot.sendMessage(msg.chat.id, "Hope to see you around again , Bye");
 ```
 This time we're using "includes" method so if user sends us anything containing "bye" word we'll send him back the message:
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/Bye.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\Bye.JPG" height="500" width="400">
 And definitely you can use any other string method that you want.
 
 
@@ -145,7 +145,7 @@ Sending audios is same and simple you can use "[sendAudio](https://github.com/ya
 
 Now you might have seen some pictures containing caption with them like the following picture.
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/CaptionJPG.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\CaptionJPG.JPG" height="500" width="400">
 
 
 Well , How to to create these?
@@ -164,7 +164,7 @@ bot.sendPhoto(msg.chat.id,"https://www.somesite.com/image.jpg",{caption : "Here 
 Let's go a step further and start working with [keyboards](https://core.telegram.org/bots#keyboards).
 keyboards are actually the ones shown in this picture:
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/keyboard.jpg" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\keyboard.jpg" height="500" width="400">
 
 
 Keyboards are nothing but an easy way to send fixed messages. It's like you're not forcing users to write something down and send it to bot, but instead you're demonstrating them some options that they can tap on and send back as an answer.
@@ -182,7 +182,7 @@ bot.sendMessage(msg.chat.id, "Welcome", {
 ```
 So now if you run you will see:
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/Keyboards.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\Keyboards.JPG" height="500" width="400">
 
 As I said in fact Keyboards are not nothing but automatic type and send for user. There is no difference if you write "I'm robot" and sending on your own or you click on Keyboard. Let's do something simple when that "I'm robot"  is received.So add this up to your previous on message:
 ```js
@@ -213,7 +213,7 @@ if (msg.text.toString().toLowerCase().indexOf(Hi) === 0) {
 }
 ```
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/usersname.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\usersname.JPG" height="500" width="400">
 
 And if you wanted to get user profile pictures you can use [getUserProfilePhotos](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md#telegrambotgetuserprofilephotosuserid-options--promise) .
 
@@ -236,7 +236,7 @@ bot.on('message', (msg) => {
 ```
 So you get idea where <code>parse_mode</code> is defined.Now if we run this:
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/parse_mode.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\parse_mode.JPG" height="500" width="400">
 
 So that's how we do it with Html you can also write with Markdown.As mentioned in official api of Telegram only these tags are supported till now:
 
@@ -270,7 +270,7 @@ bot.on('message', (msg) => {
 
 ```
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/Location.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\Location.JPG" height="500" width="400">
 
 
 And there is also [sendVenue](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md#telegrambotsendvenuechatid-latitude-longitude-title-address-options--promise).
@@ -298,7 +298,7 @@ bot.sendMessage(msg.chat.id, "Have a nice day " + msg.from.first_name);
 Now that we wrote codes go ahead and add this bot to a group , after adding it set it as of a administrator of the group so that it could get users messages.
 Now say something that includes "bye":
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/Bot.JPG" height="500" width="400">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\Bot.JPG" height="500" width="400">
 
 Now let's do another thing , write some codes that bot will remove a person from group if they say a specific word.For instance you can create a bot that will remove member if they curse in group.
 Here we will write codes that if someone says anything containing "idiot" bot will remove that person from group.
@@ -314,7 +314,7 @@ bot.kickChatMember(msg.chat.id,  msg.from.id);
 ```
 Here we have used [kickChatMember](https://github.com/yagop/node-telegram-bot-api/blob/58566d2df5146611a6a3e6140ca616403d24a20e/README.md#telegrambotkickchatmemberchatid-userid--promise) method to remove a member it receives two parameters , first one is id of chat and second one is id of user which you want to remove.Now if you add this bot among admins of a group and somebody says something containing "idiot":
 
-<img src="https://raw.githubusercontent.com/hosein2398/node-telegram-bot-api-tutorial/master/pics/Bot_2.JPG" height="400" width="300">
+<img src="C:\Users\EMMANUEL\Documents\bot-node\node-telegram-bot-api-tutorial-master\pics\Bot_2.JPG" height="400" width="300">
 
 We can't cover all methods there are some other methods related to groups and channels: [getChat](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md#TelegramBot+getChat) , [getChatAdministrators](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md#TelegramBot+getChatAdministrators) , [getChatMembersCount](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md#telegrambotgetchatmemberscountchatid--promise) , [getChatMember](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md#telegrambotgetchatmemberchatid-userid--promise) , [leaveChat](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md#telegrambotleavechatchatid--promise)
 
