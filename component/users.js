@@ -21,7 +21,7 @@ module.exports.saveNewUser = (msg)=> {
             bot.sendMessage(chatId, 'Done. User Registered Successfully');
         });
 }
-module.exports.addEmail = ()=> {
+module.exports.addEmail = (msg,match)=> {
     // correct email pattern
     const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const pattern2 = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
