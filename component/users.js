@@ -7,18 +7,26 @@ const User = mongoose.model('Users');
 
 // Save a new User
 module.exports.saveNewUser = (msg)=> {
-    const newUser ={
-        username: msg.chat.username,
-        telegramID: msg.chat.id,
-        first_name:msg.chat.first_name,
-        date: msg.date,
-    }
-    new User(newUser)
-        .save()
-        .then(newUser=>{
-            console.log('user registered');
-            bot.sendMessage(chatId, 'Done. User Registered Successfully');
-        });
+    User.findOne({telegramID:msg.chat.id}).lean()
+    .then(user=>{
+        if(user){
+            bot.sendMessage(chatId, 'User already Exist');
+        } else{
+            const newUser ={
+                username: msg.chat.username,
+                telegramID: msg.chat.id,
+                first_name:msg.chat.first_name,
+                date: msg.date,
+            }
+            new User(newUser)
+                .save()
+                .then(newUser=>{
+                    console.log('user registered');
+                    bot.sendMessage(chatId, 'Done. User Registered Successfully');
+                });
+        }
+    })
+
 }
 module.exports.addEmail = (bot,msg,match)=> {
     // correct email pattern
@@ -29,7 +37,7 @@ module.exports.addEmail = (bot,msg,match)=> {
     const email =match[1];
     // if email is valid  save
     if (pattern.test(email)) {
-        User.findOne({telegramID:msg.chat.id})
+        User.find({telegramID:msg.chat.id})
             .lean()/** for granting access */
             .then(User=>{
                 User.email=email;
