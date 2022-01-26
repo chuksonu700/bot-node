@@ -69,7 +69,7 @@ bot.onText(/\/bible/, (msg) => {
         const parsedHtml = parser(response.data);
         bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
     }).catch(error => {
-        const errorText = error.response.status === 404 ? `can't get Scripture Now: <b>${word}</b>` : `<b>An error occured, please try again later</b>`;
+        const errorText = error.response.status === 404 ? `can't get Scripture Now` : `<b>An error occured, please try again later</b>`;
         bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
     });
 });
