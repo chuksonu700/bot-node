@@ -1,6 +1,6 @@
-
+const axios = require('axios');
 // Matches "/word whatever"
-module.exports.findWord =(msg,match) => {
+module.exports.findWord =(bot,msg,match) => {
     const chatId = msg.chat.id;
     const word = match[1];
         axios.get(`${process.env.OXFORD_API_URL}/entries/en-gb/${word}`, {
@@ -23,7 +23,7 @@ module.exports.findWord =(msg,match) => {
             });
 }
 
-module.exports.bible =(msg) => {
+module.exports.bible =(bot,msg) => {
      // 'msg' is the received Message from Telegram
     
      const chatId = msg.chat.id;
