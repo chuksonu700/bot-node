@@ -72,7 +72,8 @@ bot.onText(/\/register/, (msg) => {
 
 //saving emails
 bot.onText(/\/email (.+)/,(msg,match)=>{
-    addEmail(msg,match)
+    bot=bot;
+    addEmail(bot,msg,match)
 })
 //The bot sends a message to each user once per second — we just go through the array of users with a for-loop.
 setInterval(function() {
