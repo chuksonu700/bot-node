@@ -34,9 +34,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // Matches "/word whatever"
 bot.onText(/\/word (.+)/, (msg, match) => {
-    const chatId = msg.chat.id;
-    const word = match[1];
-    findWord()
+    findWord(msg,match)
 });
 
 // Matches "/echo [whatever]"
@@ -51,7 +49,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 
 // Matches "/bile return ramdom scripture"
 bot.onText(/\/bible/, (msg) => {
-   bible()
+   bible(msg)
 });
 
 // Listen for any kind of message. There are different kinds of messages. 
