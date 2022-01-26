@@ -59,6 +59,21 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
     bot.sendMessage(chatId, resp);
 });
 
+// Matches "/bile return ramdom scripture"
+bot.onText(/\/bible/, (msg) => {
+    // 'msg' is the received Message from Telegram
+    
+    const chatId = msg.chat.id;
+    axios.get('https://labs.bible.org/api/?passage=random')
+    .then(response => {
+        const parsedHtml = parser(response.data);
+        bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
+    }).catch(error => {
+        const errorText = error.response.status === 404 ? `can't get Scripture Now: <b>${word}</b>` : `<b>An error occured, please try again later</b>`;
+        bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
+    });
+});
+
 // Listen for any kind of message. There are different kinds of messages. 
 // acknoledge the reciept of message
 bot.on('message', (msg) => {
