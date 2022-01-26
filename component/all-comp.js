@@ -2,8 +2,8 @@ const axios = require('axios');
 // Matches "/word whatever"
 module.exports.findWord =(bot,msg,match) => {
     const chatId = msg.chat.id;
-    const word = match[1];
-        axios.get(`${process.env.OXFORD_API_URL}/entries/en-gb/${word}`, {
+    const word = match[1].;
+        axios.get(`${process.env.OXFORD_API_URL}/entries/en-gb/${word.toLowerCase()}`, {
                 params: {
                     fields: 'definitions',
                     strictMatch: 'false'
@@ -18,6 +18,7 @@ module.exports.findWord =(bot,msg,match) => {
                 bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
             })
             .catch(error => {
+                console.log(error)
                 const errorText = `No definition found for the word: <b>${word}</b> <b>An error occured, please try again later</b>`;
                 bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
             });
