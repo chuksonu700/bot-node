@@ -1,3 +1,18 @@
+//setting up bot
+const token = process.env.TELEGRAM_TOKEN_CHUKSONU;
+let bot;
+
+const sasas = `your token is ${token} from bot 1`;
+console.log(sasas);
+
+if (process.env.NODE_ENV === 'production') {
+    bot = new TelegramBot(token);
+    bot.setWebHook(process.env.HEROKU_URL + bot.token);
+} else {
+    bot = new TelegramBot(token, { polling: true });
+}
+
+
 // Matches "/word whatever"
 module.exports.findWord =() => {
         axios.get(`${process.env.OXFORD_API_URL}/entries/en-gb/${word}`, {

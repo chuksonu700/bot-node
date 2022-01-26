@@ -1,12 +1,24 @@
 const mongoose = require('mongoose');
 const users = require('../models/users');
 
+// setting up bot
+ const token = process.env.TELEGRAM_TOKEN_CHUKSONU;
+let bot;
+
+const sasas = `your token is ${token} from bot 1`;
+console.log(sasas);
+
+if (process.env.NODE_ENV === 'production') {
+    bot = new TelegramBot(token);
+    bot.setWebHook(process.env.HEROKU_URL + bot.token);
+} else {
+    bot = new TelegramBot(token, { polling: true });
+}
 //setting up model
 require('../models/users');
 const User = mongoose.model('Users');
 
 // Save a new User
-
 module.exports.saveNewUser = (msg)=> {
     const newUser ={
         username: msg.chat.username,
