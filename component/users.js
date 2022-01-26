@@ -7,11 +7,11 @@ const User = mongoose.model('Users');
 
 // Save a new User
 
-module.exports.saveNewUser = ()=> {
+module.exports.saveNewUser = (msg)=> {
     const newUser ={
         username: msg.chat.username,
         telegramID: msg.chat.id,
-        first_name:message.chat.first_name,
+        first_name:msg.chat.first_name,
         date: msg.date,
     }
     new User(newUser)
