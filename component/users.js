@@ -7,6 +7,7 @@ const User = mongoose.model('Users');
 
 // Save a new User
 module.exports.saveNewUser = (bot,msg)=> {
+    const chatId = msg.chat.id;
     User.findOne({telegramID:msg.chat.id}).lean()
     .then(user=>{
         if(user){
