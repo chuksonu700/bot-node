@@ -40,12 +40,12 @@ module.exports.addEmail = (bot,msg,match)=> {
     if (pattern.test(email)) {
         User.find({telegramID:msg.chat.id})
             .lean()/** for granting access */
-            .then(User=>{
-                User.email=email;
-                User.save().
-                then(User=>{
-                     bot.sendMessage(chatId," email registered succesfully")
-                })
+            .then(user => {
+                user.email=email;
+                user.save()
+                    .then(user=>{
+                         bot.sendMessage(chatId," email registered succesfully")
+                    })
             })
     } else {
         bot.sendMessage(chatId, 'incorect email');
