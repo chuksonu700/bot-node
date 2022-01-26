@@ -18,7 +18,7 @@ module.exports.findWord =(bot,msg,match) => {
                 bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
             })
             .catch(error => {
-                const errorText = error.response.status === 404 ? `No definition found for the word: <b>${word}</b>` : `<b>An error occured, please try again later</b>`;
+                const errorText = `No definition found for the word: <b>${word}</b> <b>An error occured, please try again later</b>`;
                 bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
             });
 }
