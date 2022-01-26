@@ -66,7 +66,7 @@ bot.on('message', (msg) => {
 
     //register a user
 bot.onText(/\/register/, (msg) => {
-    saveNewUser(msg) 
+    saveNewUser(bot,msg) 
 })
 
 //saving emails
