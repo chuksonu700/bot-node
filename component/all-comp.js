@@ -1,5 +1,5 @@
 const axios = require('axios');
-const parser = require('../parser');S
+const parser = require('../parser');
 // Matches "/word whatever"
 module.exports.findWord =(bot,msg,match) => {
     const chatId = msg.chat.id;
