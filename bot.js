@@ -7,6 +7,9 @@ const parser = require('./parser.js');
 
 require('dotenv').config();
 
+//my sub module
+const {findWord} = require('./component/word-dictionary');
+
 const token = process.env.TELEGRAM_TOKEN_CHUKSONU;
 let bot;
 
@@ -26,25 +29,8 @@ if (process.env.NODE_ENV === 'production') {
 bot.onText(/\/word (.+)/, (msg, match) => {
     const chatId = msg.chat.id;
     const word = match[1];
-    axios
-        .get(`${process.env.OXFORD_API_URL}/entries/en-gb/${word}`, {
-            params: {
-                fields: 'definitions',
-                strictMatch: 'false'
-            },
-            headers: {
-                app_id: process.env.OXFORD_APP_ID,
-                app_key: process.env.OXFORD_APP_KEY
-            }
-        })
-        .then(response => {
-            const parsedHtml = parser(response.data);
-            bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
-        })
-        .catch(error => {
-            const errorText = error.response.status === 404 ? `No definition found for the word: <b>${word}</b>` : `<b>An error occured, please try again later</b>`;
-            bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
-        });
+    findWord()
+
 });
 
 // Matches "/echo [whatever]"
@@ -92,7 +78,7 @@ bot.on('message', (msg) => {
 
 let users = []
     //register a user
-bot.onText(/\/register/, (msg, match) => {
+bot.onText(/\/register/, (msg) => {
     const chatId = msg.chat.id
     users.push(chatId)
     console.log('user registered')

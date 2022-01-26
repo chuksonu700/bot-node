@@ -1,0 +1,20 @@
+
+ {
+  "message_id": 183,
+     "from": {
+         "id": 533365300,
+         "is_bot": false,
+         "first_name": "Chuks",
+         "username": "Chuksonu700",
+         "language_code": "en"
+       },
+       "chat": {
+         "id": 533365300,
+         "first_name": "Chuks",
+         "username": "Chuksonu700",
+         "type": "private"
+       },
+       "date": 1643188034,
+       "text": "/bible",
+       "entities": [ { "offset": 0, "length": 6, "type": "bot_command" } ]
+}

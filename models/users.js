@@ -4,5 +4,11 @@ const  mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Users= new Schema({
-    User:
+    username: {type:String, required:true},
+    telegramID: {type:Number, required:true},
+    first_name:String,
+    date: Date,
+    email:String,
 })
+
+module.exports = mongoose.model("Users",Users);
