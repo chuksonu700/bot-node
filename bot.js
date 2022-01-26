@@ -2,21 +2,28 @@
 
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
+const mongoose = require('mongoose');
 // This file would be created soon
 const parser = require('./parser.js');
-
 require('dotenv').config();
 
+//setting up mongodb
+const mongoDb= process.env.MONGO_BD;
+mongoose.connect(mongoDb, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+}).then(()=>{
+    console.log('Mongodb connected')
+}).catch(err=>console.log(err))
 //my sub module
-const {findWord} = require('./component/word-dictionary');
+const {findWord,bible} = require('./component/all-comp');
+const {saveNewUser,addEmail} = require('./component/users');
 
 const token = process.env.TELEGRAM_TOKEN_CHUKSONU;
 let bot;
 
-
 const sasas = `your token is ${token} from bot 1`;
 console.log(sasas);
-
 
 if (process.env.NODE_ENV === 'production') {
     bot = new TelegramBot(token);
@@ -30,40 +37,21 @@ bot.onText(/\/word (.+)/, (msg, match) => {
     const chatId = msg.chat.id;
     const word = match[1];
     findWord()
-
 });
 
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content of the message
-
     const chatId = msg.chat.id;
     const resp = match[1]; // the captured "whatever"
-
     // send back the matched "whatever" to the chat
     bot.sendMessage(chatId, resp);
 });
 
 // Matches "/bile return ramdom scripture"
 bot.onText(/\/bible/, (msg) => {
-    // 'msg' is the received Message from Telegram
-    
-    const chatId = msg.chat.id;
-    axios.get('https://labs.bible.org/api/?passage=random')
-        .then(function (response) {
-        // handle success
-        console.log(response.data);
-        const parsedHtml = response.data;
-        bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
-    })
-    .catch(function (error) {
-         // handle error
-         console.log(error);
-         const errorText = `can't get Scripture Now <b>An error occured, please try again later</b>`;
-         bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
-    })
-
+   bible()
 });
 
 // Listen for any kind of message. There are different kinds of messages. 
@@ -76,15 +64,16 @@ bot.on('message', (msg) => {
     bot.sendMessage(chatId, `Hello ${name} Received your message expect a reply Shortly`);
 });
 
-let users = []
+
     //register a user
 bot.onText(/\/register/, (msg) => {
-    const chatId = msg.chat.id
-    users.push(chatId)
-    console.log('user registered')
-    bot.sendMessage(chatId, 'Done.')
+    saveNewUser() 
 })
 
+//saving emails
+bot.onText(/\/email (.+)/,(msg,match)=>{
+    addEmail()
+})
 //The bot sends a message to each user once per second — we just go through the array of users with a for-loop.
 setInterval(function() {
         if (users.length > 0) {

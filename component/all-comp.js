@@ -19,3 +19,23 @@ module.exports.findWord =() => {
                 bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
             });
 }
+
+module.exports.bible =() => {
+     // 'msg' is the received Message from Telegram
+    
+     const chatId = msg.chat.id;
+     axios.get('https://labs.bible.org/api/?passage=random')
+         .then(function (response) {
+         // handle success
+         console.log(response.data);
+         const parsedHtml = response.data;
+         bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
+     })
+     .catch(function (error) {
+          // handle error
+          console.log(error);
+          const errorText = `can't get Scripture Now <b>An error occured, please try again later</b>`;
+          bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
+     })
+}
+
