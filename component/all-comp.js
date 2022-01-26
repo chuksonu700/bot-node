@@ -2,7 +2,7 @@ const axios = require('axios');
 // Matches "/word whatever"
 module.exports.findWord =(bot,msg,match) => {
     const chatId = msg.chat.id;
-    const word = match[1].;
+    const word = match[1];
         axios.get(`${process.env.OXFORD_API_URL}/entries/en-gb/${word.toLowerCase()}`, {
                 params: {
                     fields: 'definitions',
