@@ -43,9 +43,9 @@ module.exports.addEmail = (bot,msg,match)=> {
             .then(user => {
                 user.email=email;
                 user.save()
-                    .then(user=>{
+                .then(user=>{
                          bot.sendMessage(chatId," email registered succesfully")
-                    })
+                })
             })
     } else {
         bot.sendMessage(chatId, 'incorect email');
