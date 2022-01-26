@@ -38,16 +38,13 @@ module.exports.addEmail = (bot,msg,match)=> {
     const email =match[1];
     // if email is valid  save
     if (pattern.test(email)) {
-        User.find({telegramID:msg.chat.id})
+        User.findOneAndUpdate({telegramID:msg.chat.id},{email:email})
             .lean()/** for granting access */
             .then(user => {
-                user.email=email;
-                user.save()
-                .then(user=>{
-                         bot.sendMessage(chatId," email registered succesfully")
-                })
+                console.log(user);
+                bot.sendMessage(chatId," email registered succesfully")
             })
     } else {
-        bot.sendMessage(chatId, 'incorect email');
+        bot.sendMessage(chatId, 'incorrect email');
     }
 }
