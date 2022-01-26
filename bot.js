@@ -59,7 +59,6 @@ bot.onText(/\/bible/, (msg) => {
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
     const name = msg.from.username;
-    console.log(msg);
     // send a message to the chat acknowledging receipt of their message
     bot.sendMessage(chatId, `Hello ${name} Received your message expect a reply Shortly`);
 });

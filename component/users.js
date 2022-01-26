@@ -20,10 +20,11 @@ module.exports.saveNewUser = (msg)=> {
             bot.sendMessage(chatId, 'Done. User Registered Successfully');
         });
 }
-module.exports.addEmail = (msg,match)=> {
+module.exports.addEmail = (bot,msg,match)=> {
     // correct email pattern
     const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const pattern2 = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    console.log(msg);
     const chatId = msg.chat.id
     const email =match[1];
     // if email is valid  save
