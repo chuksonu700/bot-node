@@ -1,4 +1,5 @@
 const axios = require('axios');
+const parser = require('../parser');S
 // Matches "/word whatever"
 module.exports.findWord =(bot,msg,match) => {
     const chatId = msg.chat.id;
@@ -18,7 +19,7 @@ module.exports.findWord =(bot,msg,match) => {
                 bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
             })
             .catch(error => {
-                console.log(error)
+                console.log("error :"+error)
                 const errorText = `No definition found for the word: <b>${word}</b> <b>An error occured, please try again later</b>`;
                 bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' })
             });
