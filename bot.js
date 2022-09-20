@@ -94,6 +94,10 @@ app.use(bodyParser.json());
 
 app.listen(process.env.PORT);
 
+app.get('/',(req,res)=>{
+res.redirect('https://t.me/Chuksonubotou');
+})
+
 app.post('/' + bot.token, (req, res) => {
     bot.processUpdate(req.body);
     res.sendStatus(200);
