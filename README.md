@@ -6,3 +6,5 @@ To interact with this Bot follow this link
 
 send /word "the Word you want its meaning" to get the meaning of a word
 send /bible to get a a ramdom bible verse
+
+Thanks Will appreciate feedback
