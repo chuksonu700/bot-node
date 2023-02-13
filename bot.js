@@ -1,5 +1,4 @@
 // bot.js
-
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
 const mongoose = require('mongoose');
@@ -23,11 +22,11 @@ const token = process.env.TELEGRAM_TOKEN_CHUKSONU;
 let bot;
 
 // const sasas = `your token is ${token} from bot 1`;
-console.log(sasas);
+// console.log(sasas);
 
 if (process.env.NODE_ENV === 'production') {
     bot = new TelegramBot(token);
-    bot.setWebHook(process.env.HEROKU_URL + bot.token);
+    bot.setWebHook("https://telegram-bot-ko7e.onrender.com" + bot.token);
 } else {
     bot = new TelegramBot(token, { polling: true });
 }
