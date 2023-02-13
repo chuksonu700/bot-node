@@ -7,13 +7,15 @@ const parser = require('./parser.js');
 require('dotenv').config();
 
 //setting up mongodb
-const mongoDb= process.env.MONGO_BD;
+const mongoDb= process.env.MONGO_DB;
+// console.log(mongoDb);
 mongoose.connect(mongoDb, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 }).then(()=>{
     console.log('Mongodb connected')
 }).catch(err=>console.log(err))
+
 //my sub module
 const {findWord,bible} = require('./component/all-comp');
 const {saveNewUser,addEmail} = require('./component/users');

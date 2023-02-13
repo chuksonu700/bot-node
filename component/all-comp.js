@@ -32,7 +32,7 @@ module.exports.bible =(bot,msg) => {
      axios.get('https://labs.bible.org/api/?passage=random')
          .then(function (response) {
          // handle success
-         console.log(response.data);
+        //  console.log(response.data);
          const parsedHtml = response.data;
          bot.sendMessage(chatId, parsedHtml, { parse_mode: 'HTML' });
      })
