@@ -22,7 +22,7 @@ const {saveNewUser,addEmail} = require('./component/users');
 const token = process.env.TELEGRAM_TOKEN_CHUKSONU;
 let bot;
 
-const sasas = `your token is ${token} from bot 1`;
+// const sasas = `your token is ${token} from bot 1`;
 console.log(sasas);
 
 if (process.env.NODE_ENV === 'production') {
