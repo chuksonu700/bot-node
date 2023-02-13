@@ -97,6 +97,9 @@ app.listen(process.env.PORT);
 app.get('/',(req,res)=>{
 res.redirect('https://t.me/Chuksonubotou');
 })
+app.get('/live',(req,res)=>{
+res.status(200).send({message:"OK"});
+})
 
 app.post('/' + bot.token, (req, res) => {
     bot.processUpdate(req.body);
