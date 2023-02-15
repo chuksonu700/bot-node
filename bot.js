@@ -28,7 +28,8 @@ let bot;
 
 if (process.env.NODE_ENV === 'production') {
     bot = new TelegramBot(token);
-    bot.setWebHook("https://telegram-bot-ko7e.onrender.com" + bot.token);
+    bot.setWebHook(process.env.RENDER_EXTERNAL_URL + bot.token);
+    // bot.setWebHook("https://telegram-bot-ko7e.onrender.com" + bot.token);
 } else {
     bot = new TelegramBot(token, { polling: true });
 }
